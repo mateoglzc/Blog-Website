@@ -54,13 +54,15 @@
         </form>
     </aside>
     <main class="postSection" id="scrollbar">
+        {% for post in posts %}
         <div class="post">
-            <h4 class="title-post">Title</h4>
-            <small class="author-post"> Author</small>
+            <h4 class="title-post"><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h4>
+            <small class="author-post">{{ post.author.username }} {{ post.date_posted.strftime('%Y-%m-%d') }}</small>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores officia iusto quibusdam? Ullam voluptatibus praesentium nisi quasi in dicta necessitatibus magni quod, molestias blanditiis consequuntur accusantium soluta repudiandae veniam perspiciatis dolores quaerat molestiae alias laudantium reiciendis, ipsum illo quo optio. Natus blanditiis voluptas fugiat recusandae ducimus et aliquam cumque non, nam quos similique maiores voluptate fugit delectus, quidem magni quasi ad officia harum atque eos rerum fuga beatae autem. Quos minima quam, corrupti beatae maiores similique tenetur cupiditate nulla vitae qui necessitatibus inventore delectus consequuntur alias reiciendis? Consequuntur et maiores, illo itaque facilis cupiditate, adipisci porro, magni iste rerum odio?
+                {{ post.content }}
             </p>
         </div>
+        {% endfor %}
     </main>
 </div>
 

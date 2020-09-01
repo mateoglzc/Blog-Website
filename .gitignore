@@ -1,6 +1,4 @@
-**/.pyc
-**/.json
-**/.jpeg
-**/.jpg
-**/.db
-**/.png
+ProfilesPhotos/
+MattWebsite/site.db
+MattWebsite/__pycache__/*.pyc
+.vscode/
