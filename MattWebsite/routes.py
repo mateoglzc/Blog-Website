@@ -10,9 +10,14 @@ from flask_login import login_user, current_user, logout_user, login_required
 #Routes and functions
 
 @app.route('/')
-@app.route('/home')
 def index():
     return render_template('index.html', _external=True)
+
+@app.route('/home')
+def home():
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
+    return render_template('home.html', posts=posts)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -23,7 +28,7 @@ def login():
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
             flash(f'Welcome back {user.username}!', 'success')
-            return redirect(next_page) if next_page else redirect(url_for('index'))
+            return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
             flash('Login Unseccessful. Please check username and password.', 'danger')
     return render_template('login.html', form=form)
@@ -138,5 +143,12 @@ def delete_post(post_id):
 
     return render_template('profile.html')
 
-
+@app.route("/user/<string:username>")
+def user_post(username):
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=username).get_or_404()
+    posts = Post.query.filter_by(author=user)\
+        .order_by(Post.date_posted.desc())\
+        .paginate(page=page, per_page=5)
+    return render_template('user_posts.html', posts=posts, user=user)
 
