@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Font-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static' , filename='css/base.css') }}">
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}    
+    {% endwith %}
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+    <header>
+        <h1 class="logo">Website</h1>
+        <nav> 
+            <ul class="nav_links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('new_post') }}">Write</a></li>
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('signup') }}">Sign up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <button class="button">Contact</button>
+    </header>
+
+    {% block body %}{% endblock %}
+
+    <footer>
+        Hello
+    </footer>
+</body>
+</html>

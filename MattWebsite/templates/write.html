@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<!--Website Title-->
+<title>Profile</title>
+<!--link-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static' , filename='css/write.css') }}">
+{% endblock %}
+
+{% block body %} 
+
+    
+<div class="content">
+    <aside class="profileCard">
+        <figure>
+            <div class="avatar">
+                <img src="{{ image_file }}" class="avatar_image">
+            </div>
+            <figcaption>{{ current_user.username }}</figcaption>
+        </figure>
+        <nav>
+            <ul> 
+                <li id="t-mrg-0">Name: {{ current_user.username }}</li>
+                <li>Age: </li>
+                <li>Bio: </li>
+                <li class="Update-Account"><a href="{{ url_for('account') }}">Update Account</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="postSection" id="scrollbar">
+        <div class="post">
+            <h4 class="title-post">Title</h4>
+            <small class="author-post"> Author</small>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores officia iusto quibusdam? Ullam voluptatibus praesentium nisi quasi in dicta necessitatibus magni quod, molestias blanditiis consequuntur accusantium soluta repudiandae veniam perspiciatis dolores quaerat molestiae alias laudantium reiciendis, ipsum illo quo optio. Natus blanditiis voluptas fugiat recusandae ducimus et aliquam cumque non, nam quos similique maiores voluptate fugit delectus, quidem magni quasi ad officia harum atque eos rerum fuga beatae autem. Quos minima quam, corrupti beatae maiores similique tenetur cupiditate nulla vitae qui necessitatibus inventore delectus consequuntur alias reiciendis? Consequuntur et maiores, illo itaque facilis cupiditate, adipisci porro, magni iste rerum odio?
+            </p>
+        </div>
+    </main>
+</div>
+        
+
+{% endblock %}

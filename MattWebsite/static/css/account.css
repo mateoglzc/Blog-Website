@@ -1,0 +1,162 @@
+/* Page Specific */
+
+.content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.profileCard{
+    background-color: rgba(0, 168, 232, 0.6);
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    margin-left: 2.5rem;
+    margin-right: 135px;
+    width: 300px;
+    height: 570px;
+}
+
+#t-mrg-0{
+    margin-top: 0;
+}
+
+#l-mrg-1r{
+    margin-left: 1rem;
+}
+
+.profileCard figure{
+    padding-left: 95px;
+    padding-top: 40px;
+    font-weight: bold;
+}
+
+
+
+.avatar{
+    width: 110px;
+    height: 110px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.avatar_image{
+    display: inline;
+    margin: 0 auto;
+    margin-left: -25%; 
+    height: 100%;
+    width: auto;
+}
+
+.profileCard figcaption{
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    font-size: 25px;
+}
+
+.profileCard nav ul{
+    list-style: none;
+    padding-left: 75px;
+}
+
+.profileCard nav ul li{
+    margin-top: 15px;
+}
+
+.loginBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 15px;
+}
+
+.textbox-invalid{
+    width: 150px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid red;
+    padding: 10px;
+}
+
+.invalid-feedback{
+    font-size: 12px;
+    color: red;
+}
+
+.textbox{
+    width: 150px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.label{
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.picture_formbox{
+    margin: 10px 0;
+}
+
+.Update-Account{
+    font-size: 10px;
+    margin-top: 1rem;
+}
+
+.Update-Account a{
+    color: black;
+}
+
+
+.postSection{
+    background-color: #cbf3f0;
+    height: 570px;
+    width: 1004px;
+
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    margin-right: 2.5rem;
+
+    overflow: scroll;
+    overflow-x: hidden;
+
+    font-family: 'Nunito', sans-serif;
+}
+
+#scrollbar::-webkit-scrollbar-track
+{
+	background-color: #F5F5F5;
+}
+
+#scrollbar::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#scrollbar::-webkit-scrollbar-thumb
+{
+	background-color: #0ae;
+	
+	background-image: -webkit-gradient(linear, 0 0, 0 100%,
+	                   color-stop(.5, rgba(255, 255, 255, .2)),
+					   color-stop(.5, transparent), to(transparent));
+}
+
+.post{
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.author-post{
+    font-style: italic;
+}
+

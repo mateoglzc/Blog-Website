@@ -1,0 +1,27 @@
+
+/* Page Specific */
+
+.line{
+    margin: auto;
+    width: 90%;
+    height: 5px;
+    display: flex;
+    background-color: #121619;
+}
+
+#mainContent{
+    display: flex;
+    flex-direction: row;
+}
+
+div{
+    margin: auto;
+}
+
+.container{
+    width: 27%;
+}
+
+.container img{
+    width: 100%;
+}

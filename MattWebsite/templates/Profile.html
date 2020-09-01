@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<!--Website Title-->
+<title>Profile</title>
+<!--link-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static' , filename='css/profile.css') }}">
+{% endblock %}
+
+{% block body %} 
+
+    
+<div class="content">
+    <aside class="profileCard">
+        <figure>
+            <div class="avatar">
+                <img src="{{ image_file }}" class="avatar_image">
+            </div>
+            <figcaption>Mateo G.</figcaption>
+        </figure>
+        <nav>
+            <ul> 
+                <li id="t-mrg-0">Name: {{ current_user.username }}</li>
+                <li>Age: {{ current_user.age }}</li>
+                <li>Bio: {{current_user.bio }}</li>
+                <li class="Update-Account"><a href="{{ url_for('account') }}">Update Account</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="postSection" id="scrollbar">
+        {% for post in posts %}
+        <div class="post">
+            <h4 class="title-post"><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h4>
+            <small class="author-post">{{ post.author.username }} {{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            <p>
+                {{ post.content }}
+            </p>
+        </div>
+        {% endfor %}
+    </main>
+</div>
+        
+
+{% endblock %}

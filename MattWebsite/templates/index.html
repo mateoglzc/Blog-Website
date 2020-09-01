@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<!--Website Title-->
+<title>Molletes</title>
+<!--link-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static' , filename='css/index.css') }}">
+{% endblock %}
+
+{% block body %} 
+
+
+<section id="mainContent">
+    <div class="container"><a href="{{ url_for('profile') }}"><img src="{{ url_for('static' , filename='Images/lol1.jpg') }}" alt=""></a></div>
+    <div class="container"><a href=""><img src="{{ url_for('static' , filename='Images/lol2.jpg') }}" alt=""></a></div>
+    <div class="container"><a href=""><img src="{{ url_for('static' , filename='Images/lol3.jpg') }}" alt=""></a></div>
+</section>
+
+{% endblock %}

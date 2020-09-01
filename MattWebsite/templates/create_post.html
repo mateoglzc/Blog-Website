@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<!--Website Title-->
+<title>Profile</title>
+<!--link-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static' , filename='css/write.css') }}">
+{% endblock %}
+
+{% block body %} 
+
+    
+<div class="content">
+    <aside class="profileCard">
+        <figure>
+            <div class="avatar">
+                <img src="{{ url_for('static' , filename='ProfilesPhotos/default.jpg') }}" class="avatar_image">
+            </div>
+            <figcaption>{{ current_user.username }}</figcaption>
+        </figure>
+        <nav>
+            <ul> 
+                <li id="t-mrg-0">Name: {{ current_user.username }}</li>
+                <li>Age: </li>
+                <li>Bio: </li>
+                <li class="Update-Account"><a href="{{ url_for('account') }}">Update Account</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="postSection" id="scrollbar">
+        <div class="post">
+
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="form-post-title">
+                    {% if form.title.errors %}
+                        {{ form.title(class="textbox-invalid", placeholder="Title") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.title.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.title(class="textbox-title-post", placeholder="Title") }}
+                    {% endif %}
+                </div>
+                
+        
+                <div class="form-post-content">
+                    {% if form.content.errors %}
+                        {{ form.content(class="textbox-invalid", placeholder="Content") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.content.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.content(class="textbox-content-post", placeholder="Content") }}
+                    {% endif %}
+                </div>
+            
+                <div class="from-post-button">
+                    {{ form.submit(class="button") }}
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<!--Website Title-->
+<title>Profile</title>
+<!--link-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static' , filename='css/profile.css') }}">
+<style>
+    #dlt_btn{
+        background-color:  #FE5F55;
+        margin-right: 0;
+        font-size: 10px;
+        padding: 9px;
+        text-decoration: none;
+        color: black;
+        margin-top: 1rem;
+    }
+    #Update_btn{
+        background-color:  #4C4C47;
+        margin-right: 0;
+        font-size: 9.5px;
+        padding: 9px;
+        text-decoration: none;
+        color: black;
+    }
+    p{
+        width:100%;
+        word-wrap: break-word;
+        margin-bottom: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block body %} 
+
+    
+<div class="content">
+    <aside class="profileCard">
+        <figure>
+            <div class="avatar">
+                <img src="{{ image_file }}" class="avatar_image">
+            </div>
+            <figcaption>Mateo G.</figcaption>
+        </figure>
+        <nav>
+            <ul> 
+                <li id="t-mrg-0">Name: {{ current_user.username }}</li>
+                <li>Age: {{ current_user.age }}</li>
+                <li>Bio: {{current_user.bio }}</li>
+                <li class="Update-Account"><a href="{{ url_for('account') }}">Update Account</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="postSection" id="scrollbar">
+        <div class="post">
+            <h4 class="title-post">{{ post.title }}</h4>
+            <small class="author-post">{{ post.author.username }} {{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            <p>
+                {{ post.content }}
+            </p>
+            {% if post.author == current_user %}
+                <a href="{{url_for('update_post', post_id=post.id)}}" class="button" id="Update_btn">Update Post</a>
+                <!-- <a href="#" class="button" id="dlt_btn" data-toggle="modal" data-target="#Modal">Delete Post</a> -->
+                <form action="{{url_for('delete_post', post_id=post.id)}}" method="POST">
+                    <input class="button" id="dlt_btn" type="submit" value="Delete Post">
+                </form>
+            {% endif %}
+        </div>
+    </main>
+</div>
+        
+
+{% endblock %}

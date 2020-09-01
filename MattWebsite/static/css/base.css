@@ -1,0 +1,90 @@
+/* Website style */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+:root {
+    font-size: 16px;
+    }
+
+header{
+    background-color: #90BE6D;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    font-family: 'Rubik', sans-serif;
+
+    color: black;
+}
+
+.logo{
+    margin-right: auto;
+    margin-left: 135px;
+    padding: 1.5rem 0px;
+    
+}
+
+.nav_links{
+    list-style: none;
+}
+
+.nav_links li{
+    display: inline-block;
+    padding: 0 1rem;
+}
+
+.nav_links li a{
+    color: black;
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover{
+    color: rgb(254, 250, 224);
+}
+
+.button{
+    margin-right: 2rem;
+    padding: 9px 25px;
+    background-color: rgba(254, 250, 224, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.button::hover{
+    background-color: rgba(254, 250, 224, 0.8);
+}
+
+footer{
+    background-color: #90BE6D;
+}
+
+/* Page Specific */
+
+.alert-success{
+    background-color: #97C86A;
+    font-size: 20px;
+    padding: 10px;
+    font-family: 'Rubik' , sans-serif;
+}
+.alert-danger{
+    background-color: #e63946;
+    font-size: 20px;
+    padding: 10px;
+    font-family: 'Rubik' , sans-serif;
+}
+
+.alert-info{
+    background-color: #e63946;
+    font-size: 20px;
+    padding: 10px;
+    font-family: 'Rubik' , sans-serif;
+
+}
