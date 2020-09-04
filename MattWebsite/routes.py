@@ -158,18 +158,20 @@ def send_reset_email(user):
     token = user.get_reset_token()
     # Create Email
     msg = Message('Password Reset Request', sender='noreply@demo.com', recipients=[user.email])
-    msg_body = f'''To reset your password visit the following link. 
+    msg.body = f'''To reset your password, visit the following link: 
 {url_for("reset_token", token=token, _external=True)}
 If you did not make this request then simply ignore this email and no changes will be made.
 '''
+    mail.send(msg)
     # The _external argument is to get an absolute url 
+
 
 @app.route('/reset_password', methods=['GET', 'POST'])
 def reset_request():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = RequestResetForm()
-    if form.validate_on_submit:
+    if form.validate_on_submit():
         print('hola')
         user = User.query.filter_by(email=form.email.data).first()
         send_reset_email(user)
@@ -177,6 +179,7 @@ def reset_request():
         return redirect(url_for('login'))
 
     return render_template('reset_request.html', form=form)
+
 
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_token(token):

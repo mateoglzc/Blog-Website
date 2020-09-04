@@ -2,3 +2,4 @@ ProfilesPhotos/
 MattWebsite/site.db
 MattWebsite/__pycache__/*.pyc
 .vscode/
+secret_code.py
