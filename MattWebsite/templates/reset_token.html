@@ -1,0 +1,39 @@
+<!--Website Title-->
+<title>Reset Password</title>
+<!--link-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static' , filename='css/signup_login.css') }}">
+{% endblock %}
+
+{% block body %} 
+
+
+<form class="loginBox" method="POST" action="">
+    {{ form.hidden_tag() }}
+          
+    {% if form.password.errors %}
+        {{ form.password(class="textbox-invalid", placeholder="password") }}
+        <div class="invalid-feedback">
+            {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% else %}
+        {{ form.password(class="textbox", placeholder="password") }}
+    {% endif %}
+
+    {% if form.confirm_password.errors %}
+        {{ form.confirm_password(class="textbox-invalid", placeholder="Confirm Email") }}
+        <div class="invalid-feedback">
+            {% for error in form.confirm_password.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% else %}
+        {{ form.confirm_password(class="textbox", placeholder="Confirm Password") }}
+    {% endif %}
+
+    {{ form.submit(class="button") }}
+</form>
+
+
+{% endblock %}

@@ -2,7 +2,7 @@
 
 {% block head %}
 <!--Website Title-->
-<title>Login</title>
+<title>Reset Request</title>
 <!--link-->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static' , filename='css/signup_login.css') }}">
 {% endblock %}
@@ -24,30 +24,7 @@
         {{ form.email(class="textbox", placeholder="Email") }}
     {% endif %}
 
-            
-    {% if form.password.errors %}
-        {{ form.password(class="textbox-invalid", placeholder="Password") }}
-        <div class="invalid-feedback">
-            {% for error in form.password.errors %}
-                <span>{{ error }}</span>
-            {% endfor %}
-        </div>
-    {% else %}
-        {{ form.password(class="textbox", placeholder="Password") }}
-    {% endif %}
-
-    <div class="rememberMe">
-        {{ form.remember(class="rememberBox") }} 
-        {{ form.remember.label(class="rememberLabel") }}
-
-    </div>
-
-
     {{ form.submit(class="button") }}
-
-    <small class="legend">
-        <a href="{{ url_for('reset_request') }}">Forgot your password?</a>
-    </small>
 </form>
 
 
