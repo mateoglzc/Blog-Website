@@ -1,5 +1,6 @@
 from flask import render_template, request, Blueprint
 from MattWebsite.models import Post
+
 main = Blueprint('main', __name__)
 
 @main.route('/')

@@ -29,7 +29,7 @@
     <main class="postSection" id="scrollbar">
         {% for post in posts.items %}
         <div class="post">
-            <h4 class="title-post"><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h4>
+            <h4 class="title-post"><a href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h4>
             <small class="author-post">{{ post.author.username }} {{ post.date_posted.strftime('%Y-%m-%d') }}</small>
             <p>
                 {{ post.content }}
@@ -39,9 +39,9 @@
         {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
             {% if page_num %}
                 {% if posts.page == page_num %}
-                    <a style="color: red; text-decoration: none;" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+                    <a style="color: red; text-decoration: none;" href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
                 {% else %}
-                    <a style="color: green; text-decoration: none;" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+                    <a style="color: green; text-decoration: none;" href="{{ url_for('main.home', page=page_num) }}">{{ page_num }}</a>
 
                 {% endif %}
 

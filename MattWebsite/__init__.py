@@ -20,7 +20,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app) 
-login_manager.login_view = 'login'
+login_manager.login_view = 'users.login'
 login_manager.login_message_category = 'info'
 
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
@@ -38,5 +38,11 @@ mail = Mail(app)
 
 
 
+from MattWebsite.Users.routes import users
+from MattWebsite.Posts.routes import posts
+from MattWebsite.Main.routes import main
 
-from MattWebsite import routes
+app.register_blueprint(users)
+app.register_blueprint(posts)
+app.register_blueprint(main)
+

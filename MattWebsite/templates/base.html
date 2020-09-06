@@ -24,19 +24,19 @@
         <nav> 
             <ul class="nav_links">
                 <!-- This is where all the post will be  -->
-                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('main.home') }}">Home</a></li>
                 {% if current_user.is_authenticated %}
                 <!-- Write a post, the links beneath this only works only if you are logged in  -->
-                <li><a href="{{ url_for('new_post') }}">Write</a></li>
+                <li><a href="{{ url_for('posts.new_post') }}">Write</a></li>
                 <!-- Look at your profile  -->
-                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('users.profile') }}">Profile</a></li>
                 <!-- Logout  -->
-                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                <li><a href="{{ url_for('users.logout') }}">Logout</a></li>
                 {% else %}
                 <!-- Log in  -->
-                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('users.login') }}">Login</a></li>
                 <!-- If you dont have an account Sign up  -->
-                <li><a href="{{ url_for('signup') }}">Sign up</a></li>
+                <li><a href="{{ url_for('users.signup') }}">Sign up</a></li>
                 {% endif %}
             </ul>
         </nav>

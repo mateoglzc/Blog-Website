@@ -56,7 +56,7 @@
     <main class="postSection" id="scrollbar">
         {% for post in posts %}
         <div class="post">
-            <h4 class="title-post"><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h4>
+            <h4 class="title-post"><a href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h4>
             <small class="author-post">{{ post.author.username }} {{ post.date_posted.strftime('%Y-%m-%d') }}</small>
             <p>
                 {{ post.content }}

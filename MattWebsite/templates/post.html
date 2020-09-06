@@ -47,7 +47,7 @@
                 <li id="t-mrg-0">Name: {{ current_user.username }}</li>
                 <li>Age: {{ current_user.age }}</li>
                 <li>Bio: {{current_user.bio }}</li>
-                <li class="Update-Account"><a href="{{ url_for('account') }}">Update Account</a></li>
+                <li class="Update-Account"><a href="{{ url_for('users.account') }}">Update Account</a></li>
             </ul>
         </nav>
     </aside>
@@ -59,9 +59,9 @@
                 {{ post.content }}
             </p>
             {% if post.author == current_user %}
-                <a href="{{url_for('update_post', post_id=post.id)}}" class="button" id="Update_btn">Update Post</a>
+                <a href="{{url_for('posts.update_post', post_id=post.id)}}" class="button" id="Update_btn">Update Post</a>
                 <!-- <a href="#" class="button" id="dlt_btn" data-toggle="modal" data-target="#Modal">Delete Post</a> -->
-                <form action="{{url_for('delete_post', post_id=post.id)}}" method="POST">
+                <form action="{{url_for('posts.delete_post', post_id=post.id)}}" method="POST">
                     <input class="button" id="dlt_btn" type="submit" value="Delete Post">
                 </form>
             {% endif %}
