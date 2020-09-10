@@ -3,46 +3,38 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
-from MattWebsite import secret_code as sc
+from MattWebsite.config import Config
 
 
-app = Flask(__name__)
-
-#CHANGE THIS
-app.config['SECRET_KEY'] = sc.SECRET_KEY
-######
-
-
-#Data Base
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-login_manager = LoginManager(app) 
+db = SQLAlchemy()
+bcrypt = Bcrypt()
+login_manager = LoginManager() 
 login_manager.login_view = 'users.login'
 login_manager.login_message_category = 'info'
 
-app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-# Here username and password as enviorenment variables
-
-app.config['MAIL_USERNAME'] = sc.MAIL_USERNAME
-app.config['MAIL_PASSWORD'] = sc.MAIL_PASSWORD
-
-
-
 # Initialize our extension
-mail = Mail(app)
+mail = Mail()
 
 
+def create_app(config_class=Config):
+    app = Flask(__name__)
+    app.config.from_object(Config)
 
-from MattWebsite.Users.routes import users
-from MattWebsite.Posts.routes import posts
-from MattWebsite.Main.routes import main
+    db.init_app(app)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+    mail.init_app(app)
 
-app.register_blueprint(users)
-app.register_blueprint(posts)
-app.register_blueprint(main)
+    from MattWebsite.Users.routes import users
+    from MattWebsite.Posts.routes import posts
+    from MattWebsite.Main.routes import main
+    from MattWebsite.Errors.handlers import errors
+
+    app.register_blueprint(users)
+    app.register_blueprint(posts)
+    app.register_blueprint(main)
+    app.register_blueprint(errors)
+
+    return app
+
 

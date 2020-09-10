@@ -1,8 +1,8 @@
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from datetime import datetime
-from MattWebsite import db, login_manager, app
+from MattWebsite import db, login_manager
 from flask_login import UserMixin
-
+from flask import current_app
 
 
 @login_manager.user_loader
@@ -22,12 +22,12 @@ class User(db.Model, UserMixin):
 
     # This two methods are a way to generate and validate tokens if you want to reset your password
     def get_reset_token(self, expire_sec=1800):
-        s = Serializer(app.config['SECRET_KEY'], expire_sec)
+        s = Serializer(current_app.config['SECRET_KEY'], expire_sec)
         return s.dumps({'user_id': self.id}).decode('utf-8')
 
     @staticmethod
     def verify_reset_token(token):
-        s = Serializer(app.config['SECRET KEY'], expire_sec)
+        s = Serializer(current_app.config['SECRET KEY'], expire_sec)
         try:
             user_id = s.load(token)['user_id']
         except:
