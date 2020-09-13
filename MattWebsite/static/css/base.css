@@ -68,6 +68,8 @@ header{
 
 footer{
     background-color: #90BE6D;
+    margin: 0;
+    padding: 10px;
 }
 
 /* Page Specific */

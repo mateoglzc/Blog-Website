@@ -23,9 +23,9 @@
         <h1 class="logo">Website</h1>
         <nav> 
             <ul class="nav_links">
+                {% if current_user.is_authenticated %}
                 <!-- This is where all the post will be  -->
                 <li><a href="{{ url_for('main.home') }}">Home</a></li>
-                {% if current_user.is_authenticated %}
                 <!-- Write a post, the links beneath this only works only if you are logged in  -->
                 <li><a href="{{ url_for('posts.new_post') }}">Write</a></li>
                 <!-- Look at your profile  -->
@@ -33,6 +33,8 @@
                 <!-- Logout  -->
                 <li><a href="{{ url_for('users.logout') }}">Logout</a></li>
                 {% else %}
+                <!-- This is where all the post will be  -->
+                <li><a href="{{ url_for('main.index') }}">Home</a></li>
                 <!-- Log in  -->
                 <li><a href="{{ url_for('users.login') }}">Login</a></li>
                 <!-- If you dont have an account Sign up  -->
