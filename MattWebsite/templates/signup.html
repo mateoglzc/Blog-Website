@@ -41,7 +41,7 @@
         {{ form.password(class="textbox-invalid", placeholder="Password") }}
         <div class="invalid-feedback">
             {% for error in form.password.errors %}
-                <span>{{ error }}</spanPassword
+                <span>{{ error }}</span>
             {% endfor %}
         </div>
     {% else %}

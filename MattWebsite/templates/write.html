@@ -20,9 +20,9 @@
         </figure>
         <nav>
             <ul> 
-                <li id="t-mrg-0">Name: {{ current_user.username }}</li>
-                <li>Age: </li>
-                <li>Bio: </li>
+                <li id="t-mrg-0">Name: {{ current_user.name }}</li>
+                <li>Age: {{ current_user.age }}</li>
+                <li>Bio: {{ current_user.bio }}</li>
                 <li class="Update-Account"><a href="{{ url_for('users.account') }}">Update Account</a></li>
             </ul>
         </nav>

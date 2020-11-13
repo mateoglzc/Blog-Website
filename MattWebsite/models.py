@@ -16,8 +16,9 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jgp')
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
-    # age = db.Column(db.Integer)
-    # bio = db.Column(db.String(200))
+    age = db.Column(db.Integer)
+    bio = db.Column(db.String(200))
+    name = db.Column(db.String(144))
 
 
     # This two methods are a way to generate and validate tokens if you want to reset your password

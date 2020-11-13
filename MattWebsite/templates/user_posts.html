@@ -16,11 +16,11 @@
             <div class="avatar">
                 <img src="{{ image_file }}" class="avatar_image">
             </div>
-            <figcaption>Mateo G.</figcaption>
+            <figcaption>{{ user.username }}</figcaption>
         </figure>
         <nav>
             <ul> 
-                <li id="t-mrg-0">Name: {{ user.username }}</li>
+                <li id="t-mrg-0">Name: {{ user.name }}</li>
                 <li>Age: {{ user.age }}</li>
                 <li>Bio: {{ user.bio }}</li>
             </ul>
